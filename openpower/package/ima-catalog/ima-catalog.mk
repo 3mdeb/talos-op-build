@@ -4,7 +4,8 @@
 #
 ################################################################################
 IMA_CATALOG_VERSION ?= 3d30c7aca6c8ef066f92384271827ad5b66392bf 
-IMA_CATALOG_SITE ?= $(call github,open-power,ima-catalog,$(IMA_CATALOG_VERSION))
+IMA_CATALOG_SITE ?= https://scm.raptorcs.com/scm/git/ima-catalog
+IMA_CATALOG_SITE_METHOD = git
 IMA_CATALOG_LICENSE = Apache-2.0
 IMA_CATALOG_DEPENDENCIES = host-dtc host-xz
 

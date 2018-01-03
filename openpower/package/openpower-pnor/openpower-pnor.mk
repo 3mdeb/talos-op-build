@@ -5,11 +5,12 @@
 ################################################################################
 
 OPENPOWER_PNOR_VERSION ?= 2ea669b4aa574a9e0d121ca60e782b2354064eb0
-OPENPOWER_PNOR_SITE ?= $(call github,open-power,pnor,$(OPENPOWER_PNOR_VERSION))
+OPENPOWER_PNOR_SITE ?= https://scm.raptorcs.com/scm/git/pnor
+OPENPOWER_PNOR_SITE_METHOD = git
 
 OPENPOWER_PNOR_LICENSE = Apache-2.0
 OPENPOWER_PNOR_LICENSE_FILES = LICENSE
-OPENPOWER_PNOR_DEPENDENCIES = hostboot-binaries machine-xml skiboot host-openpower-ffs capp-ucode host-openpower-pnor-util
+OPENPOWER_PNOR_DEPENDENCIES = machine-xml skiboot host-openpower-ffs host-openpower-pnor-util
 
 ifeq ($(BR2_OPENPOWER_POWER9),y)
 OPENPOWER_PNOR_DEPENDENCIES += hcode
@@ -78,14 +79,7 @@ FILES_TO_TAR = $(HOSTBOOT_BUILD_IMAGES_DIR)/* \
 
 
 # Subpackages we want to include in the version info (do not include openpower-pnor)
-OPENPOWER_VERSIONED_SUBPACKAGES = skiboot
-ifeq ($(BR2_PACKAGE_HOSTBOOT_P8),y)
-OPENPOWER_VERSIONED_SUBPACKAGES += hostboot-p8 occ-p8
-endif
-ifeq ($(BR2_PACKAGE_HOSTBOOT),y)
-OPENPOWER_VERSIONED_SUBPACKAGES += hostboot occ
-endif
-OPENPOWER_VERSIONED_SUBPACKAGES += linux petitboot machine-xml hostboot-binaries capp-ucode
+OPENPOWER_VERSIONED_SUBPACKAGES = skiboot hostboot linux petitboot machine-xml occ
 OPENPOWER_PNOR = openpower-pnor
 
 ifeq ($(BR2_OPENPOWER_POWER9),y)

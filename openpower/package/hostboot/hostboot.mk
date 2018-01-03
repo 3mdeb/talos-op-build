@@ -3,9 +3,9 @@
 # hostboot for POWER9
 #
 ################################################################################
-
 HOSTBOOT_VERSION = $(call qstrip,$(BR2_HOSTBOOT_VERSION))
-HOSTBOOT_SITE ?= $(call github,open-power,hostboot,$(HOSTBOOT_VERSION))
+HOSTBOOT_SITE = https://scm.raptorcs.com/scm/git/talos-hostboot
+HOSTBOOT_SITE_METHOD = git
 
 HOSTBOOT_LICENSE = Apache-2.0
 HOSTBOOT_LICENSE_FILES = LICENSE
