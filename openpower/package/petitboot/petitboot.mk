@@ -4,9 +4,9 @@
 #
 ################################################################################
 
-PETITBOOT_VERSION = 1.8.0
-PETITBOOT_SOURCE = petitboot-$(PETITBOOT_VERSION).tar.gz
-PETITBOOT_SITE ?= https://github.com/open-power/petitboot/releases/download/v$(PETITBOOT_VERSION)
+PETITBOOT_VERSION = v1.6.6
+PETITBOOT_SITE ?= https://scm.raptorcs.com/scm/git/talos-petitboot
+PETITBOOT_SITE_METHOD = git
 PETITBOOT_DEPENDENCIES = ncurses udev host-bison host-flex lvm2
 PETITBOOT_LICENSE = GPLv2
 PETITBOOT_LICENSE_FILES = COPYING

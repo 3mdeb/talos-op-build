@@ -4,8 +4,9 @@
 #
 ################################################################################
 
-SBE_VERSION = $(call qstrip,$(BR2_SBE_VERSION))
-SBE_SITE = $(call github,open-power,sbe,$(SBE_VERSION))
+SBE_VERSION ?= 86ae83c5d6a45b3eb616af87adf081f0216fae08
+SBE_SITE ?= https://scm.raptorcs.com/scm/git/talos-sbe
+SBE_SITE_METHOD = git
 
 SBE_LICENSE = Apache-2.0
 SBE_DEPENDENCIES = host-ppe42-gcc hcode

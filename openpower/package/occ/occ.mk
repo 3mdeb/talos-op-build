@@ -7,6 +7,9 @@
 OCC_VERSION = $(call qstrip,$(BR2_OCC_VERSION))
 OCC_SITE = $(call github,open-power,occ,$(OCC_VERSION))
 
+OCC_VERSION ?= $(if $(BR2_OPENPOWER_POWER9),$(OCC_VERSION_BRANCH_MASTER),$(OCC_VERSION_BRANCH_MASTER_P8))
+OCC_SITE = https://scm.raptorcs.com/scm/git/talos-occ
+OCC_SITE_METHOD = git
 OCC_LICENSE = Apache-2.0
 
 OCC_LICENSE_FILES = LICENSE
@@ -18,10 +21,9 @@ OCC_STAGING_DIR = $(STAGING_DIR)/occ
 
 OCC_IMAGE_BIN_PATH = obj/image.bin
 
-OCC_DEPENDENCIES = host-binutils host-ppe42-gcc
-ifeq ($(BR2_OCC_GPU_BIN_BUILD),y)
-	OCC_DEPENDENCIES += hostboot-binaries
-endif
+OCC_DEPENDENCIES_P8 = host-binutils host-p8-pore-binutils
+OCC_DEPENDENCIES_P9 = host-binutils host-ppe42-gcc
+OCC_DEPENDENCIES ?= $(if $(BR2_OPENPOWER_POWER9),$(OCC_DEPENDENCIES_P9),$(OCC_DEPENDENCIES_P8))
 
 define OCC_BUILD_CMDS
 	if [ "$(BR2_OCC_GPU_BIN_BUILD)" == "y"  ]; then \
