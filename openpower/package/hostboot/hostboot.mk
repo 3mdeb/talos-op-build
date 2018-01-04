@@ -20,7 +20,25 @@ HOSTBOOT_INSTALL_TARGET = NO
 HOSTBOOT_ENV_VARS=$(TARGET_MAKE_ENV) PERL_USE_UNSAFE_INC=1 \
     CONFIG_FILE=$(BR2_EXTERNAL_OP_BUILD_PATH)/configs/hostboot/$(BR2_HOSTBOOT_CONFIG_FILE) \
     OPENPOWER_BUILD=1 CROSS_PREFIX=$(TARGET_CROSS) HOST_PREFIX="" HOST_BINUTILS_DIR=$(HOST_BINUTILS_DIR) \
-    HOSTBOOT_VERSION=`cat $(HOSTBOOT_VERSION_FILE)`
+    HOSTBOOT_VERSION=`cat $(HOSTBOOT_VERSION_FILE)` \
+    PERL_USE_UNSAFE_INC=1
+
+define HOSTBOOT_APPLY_PATCHES
+       if [ "$(BR2_OPENPOWER_POWER9)" == "y" ]; then \
+           $(APPLY_PATCHES) $(@D) $(BR2_EXTERNAL_OP_BUILD_PATH)/package/hostboot/p9Patches \*.patch; \
+           if [ -d $(BR2_EXTERNAL_OP_BUILD_PATH)/custom/patches/hostboot/p9Patches ]; then \
+               $(APPLY_PATCHES) $(@D) $(BR2_EXTERNAL_OP_BUILD_PATH)/custom/patches/hostboot/p9Patches \*.patch; \
+           fi; \
+       fi; \
+       if [ "$(BR2_OPENPOWER_POWER8)" == "y" ]; then \
+           $(APPLY_PATCHES) $(@D) $(BR2_EXTERNAL_OP_BUILD_PATH)/package/hostboot/p8Patches \*.patch; \
+           if [ -d $(BR2_EXTERNAL_OP_BUILD_PATH)/custom/patches/hostboot/p8Patches ]; then \
+               $(APPLY_PATCHES) $(@D) $(BR2_EXTERNAL_OP_BUILD_PATH)/custom/patches/hostboot/p8Patches \*.patch; \
+           fi; \
+       fi;
+endef
+
+HOSTBOOT_POST_PATCH_HOOKS += HOSTBOOT_APPLY_PATCHES
 
 define HOSTBOOT_BUILD_CMDS
         $(HOSTBOOT_ENV_VARS) bash -c 'cd $(@D) && source ./env.bash && $(MAKE)'
