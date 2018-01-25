@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-OCC_VERSION = $(call qstrip,$(BR2_OCC_VERSION))
-OCC_SITE = $(call github,open-power,occ,$(OCC_VERSION))
+OCC_VERSION_BRANCH_MASTER_P8 ?= 28f2cec690b7f19548ce860a8820f519e6c39a6a
+OCC_VERSION_BRANCH_MASTER ?= 577915f28604090d3b9a16e7a5a109d3afff87f9
 
 OCC_VERSION ?= $(if $(BR2_OPENPOWER_POWER9),$(OCC_VERSION_BRANCH_MASTER),$(OCC_VERSION_BRANCH_MASTER_P8))
 OCC_SITE = https://scm.raptorcs.com/scm/git/talos-occ
