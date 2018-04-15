@@ -9,7 +9,7 @@ SBE_SITE ?= https://scm.raptorcs.com/scm/git/talos-sbe
 SBE_SITE_METHOD = git
 
 SBE_LICENSE = Apache-2.0
-SBE_DEPENDENCIES = host-ppe42-gcc
+SBE_DEPENDENCIES = host-ppe42-gcc hcode
 
 SBE_INSTALL_IMAGES = YES
 SBE_INSTALL_TARGET = NO
