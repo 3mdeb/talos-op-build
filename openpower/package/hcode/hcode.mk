@@ -4,15 +4,16 @@
 #
 ################################################################################
 
-HCODE_VERSION = $(call qstrip,$(BR2_HCODE_VERSION))
-HCODE_SITE = $(call github,open-power,hcode,$(HCODE_VERSION))
+HCODE_VERSION ?= 33d1676fd0eb0d2d5d8c91abcb9adb52d3130a48
+HCODE_SITE ?= https://scm.raptorcs.com/scm/git/talos-hcode
+HCODE_SITE_METHOD = git
 
 HCODE_LICENSE = Apache-2.0
 
 HCODE_INSTALL_IMAGES = YES
 HCODE_INSTALL_TARGET = NO
 
-HCODE_DEPENDENCIES = host-binutils host-ppe42-gcc hostboot-binaries
+HCODE_DEPENDENCIES = host-binutils host-ppe42-gcc
 
 HW_IMAGE_BIN_PATH=output/images/hw_image
 HW_IMAGE_BIN=p9n.hw_image.bin
@@ -26,9 +27,8 @@ HCODE_ENV_VARS= CONFIG_FILE=$(BR2_EXTERNAL_OP_BUILD_PATH)/configs/hcode/$(BR2_HC
 	LD_LIBRARY_PATH=$(HOST_DIR)/usr/lib OPENPOWER_BUILD=1\
 	CROSS_COMPILER_PATH=$(PPE42_GCC_BIN) PPE_TOOL_PATH=$(CROSS_COMPILER_PATH) \
 	PPE_PREFIX=$(CROSS_COMPILER_PATH)/bin/powerpc-eabi- \
-	RINGFILEPATH=$(STAGING_DIR)/hostboot_binaries __EKB_PREFIX=$(CXXPATH) \
-	CONFIG_IONV_FILE_LOCATION=$(STAGING_DIR)/hostboot_binaries/$(BR2_HOSTBOOT_BINARY_IONV_FILENAME) \
-	CONFIG_INCLUDE_IONV=$(BR2_HCODE_INCLUDE_IONV)
+	RINGFILEPATH=$(@D)/rings/ __EKB_PREFIX=$(CXXPATH) \
+	CONFIG_INCLUDE_IONV=0
 
 define HCODE_INSTALL_IMAGES_CMDS
 	mkdir -p $(STAGING_DIR)/hcode
