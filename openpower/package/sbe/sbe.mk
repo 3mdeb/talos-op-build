@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SBE_VERSION ?= 9b7838172f0bbce5fc90c5626664facafc9ecfef
+SBE_VERSION ?= 6415b1f1bc293f75101320885664320ba5d7a5f2
 SBE_SITE ?= https://scm.raptorcs.com/scm/git/talos-sbe
 SBE_SITE_METHOD = git
 
