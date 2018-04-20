@@ -5,8 +5,13 @@
 
 set +e
 
+# Make sure debugfs is mounted
+if [ ! -e /sys/kernel/debug/powerpc ]; then
+       mount -t debugfs none /sys/kernel/debug/
+fi
+
 # Set OEM3 bit
-/sbin/devmem-aspeed 0x1e789060 w $(printf '0x%X\n' "$((`/sbin/devmem-aspeed 0x1e789060` | 0x10))")
+/sbin/devmem-aspeed io 0x1e789060=$(printf '0x%X\n' "$((`/sbin/devmem-aspeed io 0x1e789060` | 0x10))")
 
 # Always return success
 exit 0
