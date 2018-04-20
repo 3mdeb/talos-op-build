@@ -1,12 +1,18 @@
 #!/bin/sh
 #
-# Copyright © 2018 Raptor Engineering, LLC
+# Copyright © 2019 Raptor Engineering, LLC
 # Released under the GNU GPL v3
 
 set +e
 
-# Set OEM3 bit
-/sbin/devmem-aspeed 0x1e789060 w $(printf '0x%X\n' "$((`/sbin/devmem-aspeed 0x1e789060` | 0x10))")
+# Make sure debugfs is mounted
+if [ ! -e /sys/kernel/debug/powerpc ]; then
+       mount -t debugfs none /sys/kernel/debug/
+fi
+
+# Send 0xfefe start code via port 81h/82h
+pnv-lpc io 0x81.b=254
+pnv-lpc io 0x82.b=254
 
 # Always return success
 exit 0
