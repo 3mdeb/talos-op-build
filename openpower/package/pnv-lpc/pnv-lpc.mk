@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PNV_LPC_VERSION = 90e170cab6ff2fb1e1771972402e1d426448544c
+PNV_LPC_VERSION = 303b7b68465a958762bc7e66cea7a7c94740ef7b
 PNV_LPC_SITE = https://scm.raptorcs.com/scm/git/talos-skiboot
 PNV_LPC_SITE_METHOD = git
 
