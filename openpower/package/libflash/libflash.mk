@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBFLASH_VERSION = 303b7b68465a958762bc7e66cea7a7c94740ef7b
+LIBFLASH_VERSION = 2d1519ef16b773401ddcc532592505f1251c82e4
 LIBFLASH_SITE = https://scm.raptorcs.com/scm/git/talos-skiboot
 LIBFLASH_SITE_METHOD = git
 
