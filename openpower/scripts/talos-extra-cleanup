@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Extra cleanup tasks to trim some extra fat from the target.
+
+# If $TARGET_DIR is not set, bail immediately.
+if [ -z "$TARGET_DIR" ]; then
+	exit 1
+fi
+
+# libstdc++ is not used by any skiroot binaries.
+rm $TARGET_DIR/usr/lib/libstdc++*
+
+# libelf is needed for kexec, but no point in keeping foreign platform support.
+for n in aarch64 alpha arm i386 ia64 m68k s390 sh sparc tilegx x86_64
+do
+	rm $TARGET_DIR/usr/lib/elfutils/libebl_${n}*.so
+done
+
+exit 0
