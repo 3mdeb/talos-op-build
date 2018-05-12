@@ -8,7 +8,7 @@ set +e
 logger "Mounting boot kernel firmware partition"
 /sbin/modprobe powernv_flash 2>&1 | logger
 /sbin/modprobe mtdblock 2>&1 | logger
-/bin/mount -t jffs2 -o ro $(cat /proc/mtd | grep BOOTKERNFW | awk '{print "/dev/"$1}' | sed 's/://g' | sed 's/mtd/mtdblock/g') /lib/firmware 2>&1 | logger
+/bin/mount -t squashfs -o ro $(cat /proc/mtd | grep BOOTKERNFW | awk '{print "/dev/"$1}' | sed 's/://g' | sed 's/mtd/mtdblock/g') /lib/firmware 2>&1 | logger
 logger "Firmware partition contents:"
 ls -lR /lib/firmware | logger
 
