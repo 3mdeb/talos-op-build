@@ -5,7 +5,7 @@
 ################################################################################
 
 OCC_VERSION_BRANCH_MASTER_P8 ?= 28f2cec690b7f19548ce860a8820f519e6c39a6a
-OCC_VERSION_BRANCH_MASTER ?= 77bb5e602b4aa3421e38af2b8fadb55bb2e9496b
+OCC_VERSION_BRANCH_MASTER ?= a8d07676985b31d9e0631d2529a05ce3f68f07b7
 
 OCC_VERSION ?= $(if $(BR2_OPENPOWER_POWER9),$(OCC_VERSION_BRANCH_MASTER),$(OCC_VERSION_BRANCH_MASTER_P8))
 OCC_SITE = https://scm.raptorcs.com/scm/git/talos-occ
