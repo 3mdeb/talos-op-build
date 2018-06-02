@@ -55,15 +55,3 @@ a handful of other packages (see below).
           build-essential g++ git bison flex unzip \
           libssl-dev libxml-simple-perl libxml-sax-perl libxml-parser-perl libxml2-dev libxml2-utils xsltproc \
           wget bc rsync
-
-### Dependencies for 64-bit little endian Fedora systems
-
-1. Install Fedora (>= 25) 64-bit.
-2. Install the packages necessary for the build:
-
-        sudo dnf install gcc-c++ flex bison git ctags cscope expat-devel patch \
-          zlib-devel zlib-static texinfo perl-bignum "perl(XML::Simple)" \
-          "perl(YAML)" "perl(XML::SAX)" "perl(Fatal)" "perl(Thread::Queue)" \
-          "perl(Env)" "perl(XML::LibXML)" "perl(Digest::SHA1)" libxml2-devel \
-          which wget unzip tar cpio python bzip2 bc findutils ncurses-devel
-
