@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-HCODE_VERSION ?= 9d40d9e1434ee0306cb10f21273617f2b5d8361c
+HCODE_VERSION ?= fc61f458e183997396da8a23f2b9a2a98b2300ce
 HCODE_SITE ?= https://scm.raptorcs.com/scm/git/talos-hcode
 HCODE_SITE_METHOD = git
 
