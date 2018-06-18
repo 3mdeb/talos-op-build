@@ -14,10 +14,10 @@ index 554dcaddbce4..0feb58c9ad1b 100644
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 4
- PATCHLEVEL = 17
+ PATCHLEVEL = 16
  SUBLEVEL = 0
 -EXTRAVERSION =
 +EXTRAVERSION = -openpower1
- NAME = Merciless Moray
+ NAME = Fearless Coyote
  
  # *DOCUMENTATION*
