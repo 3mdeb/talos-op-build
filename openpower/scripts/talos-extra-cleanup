@@ -16,4 +16,8 @@ do
 	rm $TARGET_DIR/usr/lib/elfutils/libebl_${n}*.so
 done
 
+# Keeping hardware driver modules in the skiroot build is more important than
+# keeping pretty-printing support for vendors in skiroot.
+rm $TARGET_DIR/etc/udev/hwdb.d/*
+
 exit 0
