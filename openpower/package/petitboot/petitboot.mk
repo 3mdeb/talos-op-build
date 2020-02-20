@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-PETITBOOT_VERSION = v1.10.3
+PETITBOOT_VERSION = 0ed84c01b6eaee98bd44cf0892982bbd059c75d1
 PETITBOOT_SITE ?= https://scm.raptorcs.com/scm/git/talos-petitboot
 PETITBOOT_SITE_METHOD = git
 PETITBOOT_DEPENDENCIES = ncurses udev host-bison host-flex lvm2
