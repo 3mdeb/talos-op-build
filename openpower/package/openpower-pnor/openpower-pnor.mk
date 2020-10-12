@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-OPENPOWER_PNOR_VERSION ?= 06cd438e98b89d1b28b3cbfcdf6a880e9c02621f
-OPENPOWER_PNOR_SITE ?= https://scm.raptorcs.com/scm/git/pnor
+OPENPOWER_PNOR_VERSION ?= 5ae8faaa35d332d4102c3591279ab1382ed0b6dc
+OPENPOWER_PNOR_SITE ?= https://github.com/3mdeb/pnor.git
 OPENPOWER_PNOR_SITE_METHOD = git
 
 OPENPOWER_PNOR_LICENSE = Apache-2.0
