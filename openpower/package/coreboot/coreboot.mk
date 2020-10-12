@@ -21,7 +21,8 @@ define COREBOOT_BUILD_CMDS
 endef
 
 define COREBOOT_INSTALL_IMAGES_CMDS
-        cd $(@D) && cp build/coreboot.rom $(STAGING_DIR)/coreboot_build_images/
+        cd $(@D) && cp build/coreboot.signed  $(STAGING_DIR)/coreboot_build_images/ && \
+                cp build/bootblock.signed.ecc  $(STAGING_DIR)/coreboot_build_images/
 endef
 
 $(eval $(generic-package))
