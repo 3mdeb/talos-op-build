@@ -18,7 +18,7 @@ COREBOOT_INSTALL_TARGET = NO
 COREBOOT_ENV_VARS=$(TARGET_MAKE_ENV)
 
 define COREBOOT_BUILD_CMDS
-        $(COREBOOT_ENV_VARS) bash -c 'cd $(@D) && $(MAKE) crossgcc-ppc64 && cp configs/$(call qstrip,$(BR2_COREBOOT_CONFIG_FILE)) .config && $(MAKE) olddefconfig && $(MAKE)'
+        $(COREBOOT_ENV_VARS) bash -c 'cd $(@D) && $(MAKE) crossgcc-ppc64 CPUS=8 && cp configs/$(call qstrip,$(BR2_COREBOOT_CONFIG_FILE)) .config && $(MAKE) olddefconfig && $(MAKE)'
 endef
 
 define COREBOOT_INSTALL_IMAGES_CMDS
