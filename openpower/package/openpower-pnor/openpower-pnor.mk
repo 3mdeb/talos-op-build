@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENPOWER_PNOR_VERSION ?= 5ae8faaa35d332d4102c3591279ab1382ed0b6dc
+OPENPOWER_PNOR_VERSION ?= 9852fbe04c8c683534799eff002d3191e3b0c255
 OPENPOWER_PNOR_SITE ?= https://github.com/3mdeb/pnor.git
 OPENPOWER_PNOR_SITE_METHOD = git
 
@@ -13,7 +13,7 @@ OPENPOWER_PNOR_LICENSE_FILES = LICENSE
 OPENPOWER_PNOR_DEPENDENCIES = machine-xml skiboot host-openpower-ffs host-openpower-pnor-util
 
 ifeq ($(BR2_OPENPOWER_POWER9),y)
-OPENPOWER_PNOR_DEPENDENCIES += hcode
+OPENPOWER_PNOR_DEPENDENCIES += coreboot
 endif
 
 ifeq ($(BR2_OPENPOWER_POWER9),y)
@@ -61,6 +61,7 @@ OPENPOWER_PNOR_INSTALL_IMAGES = YES
 OPENPOWER_PNOR_INSTALL_TARGET = NO
 
 HOSTBOOT_IMAGE_DIR=$(STAGING_DIR)/hostboot_build_images/
+COREBOOT_IMAGE_DIR=$(STAGING_DIR)/coreboot_build_images/
 HOSTBOOT_BINARY_DIR = $(STAGING_DIR)/hostboot_binaries/
 HCODE_STAGING_DIR = $(STAGING_DIR)/hcode/
 SBE_BINARY_DIR = $(STAGING_DIR)/sbe_binaries/
@@ -102,6 +103,7 @@ define OPENPOWER_PNOR_INSTALL_IMAGES_CMDS
             -release  $(OPENPOWER_RELEASE) \
             -op_target_dir $(HOSTBOOT_IMAGE_DIR) \
             -hb_image_dir $(HOSTBOOT_IMAGE_DIR) \
+            -cb_image_dir $(COREBOOT_IMAGE_DIR) \
             -scratch_dir $(OPENPOWER_PNOR_SCRATCH_DIR) \
             -hb_binary_dir $(HOSTBOOT_BINARY_DIR) \
             -hcode_dir $(HCODE_STAGING_DIR) \
@@ -133,6 +135,7 @@ define OPENPOWER_PNOR_INSTALL_IMAGES_CMDS
             -xml_layout_file $(@D)/"$(OPENPOWER_RELEASE)"Layouts/$(BR2_OPENPOWER_PNOR_XML_LAYOUT_FILENAME) \
             -pnor_filename $(STAGING_DIR)/pnor/$(BR2_OPENPOWER_PNOR_FILENAME) \
             -hb_image_dir $(HOSTBOOT_IMAGE_DIR) \
+            -cb_image_dir $(COREBOOT_IMAGE_DIR) \
             -scratch_dir $(OPENPOWER_PNOR_SCRATCH_DIR) \
             -outdir $(STAGING_DIR)/pnor/ \
             -payload $(OPENPOWER_PNOR_SCRATCH_DIR)/$(BR2_SKIBOOT_LID_XZ_NAME) \
