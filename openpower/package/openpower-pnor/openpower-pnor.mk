@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENPOWER_PNOR_VERSION ?= d44fa7f5933f6fa8c9f85a18bbe444422576faa7
+OPENPOWER_PNOR_VERSION ?= 8bb6502ea967ae1ed97f06b52c7df76d2dd47dca
 OPENPOWER_PNOR_SITE ?= https://github.com/3mdeb/pnor.git
 OPENPOWER_PNOR_SITE_METHOD = git
 
