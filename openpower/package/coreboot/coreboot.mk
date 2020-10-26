@@ -29,8 +29,8 @@ endef
 
 define COREBOOT_INSTALL_IMAGES_CMDS
 	mkdir -p $(STAGING_DIR)/coreboot_build_images/ && \
-    cd $(@D) &&	cp build/coreboot.rom.signed  $(STAGING_DIR)/coreboot_build_images/ && \
-	cp build/bootblock.signed.ecc  $(STAGING_DIR)/coreboot_build_images/
+	cp build/coreboot.rom  $(STAGING_DIR)/coreboot_build_images/ && \
+	cp build/cbfs/fallback/bootblock.bin  $(STAGING_DIR)/coreboot_build_images/
 endef
 
 $(eval $(generic-package))
