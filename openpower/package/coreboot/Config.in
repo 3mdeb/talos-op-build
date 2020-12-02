@@ -1,0 +1,39 @@
+config BR2_PACKAGE_COREBOOT
+        bool "coreboot"
+        default y if (BR2_OPENPOWER_POWER9)
+        select BR2_CPP
+        help
+            Project to build the coreboot firmware codebase
+
+if BR2_PACKAGE_COREBOOT
+
+choice
+	prompt "coreboot version"
+	default BR2_COREBOOT_LATEST_VERSION
+
+config BR2_COREBOOT_LATEST_VERSION
+	bool "Use latest coreboot"
+
+config BR2_COREBOOT_CUSTOM_VERSION
+	bool "Custom version"
+
+endchoice
+
+config BR2_COREBOOT_CUSTOM_VERSION_VALUE
+	string "coreboot version"
+	depends on BR2_COREBOOT_CUSTOM_VERSION
+
+config BR2_COREBOOT_VERSION
+	string
+	default "cd3211ce2b448fc2295c45b1a3d9699d5714b6a3" if BR2_COREBOOT_LATEST_VERSION
+	default BR2_COREBOOT_CUSTOM_VERSION_VALUE \
+		if BR2_COREBOOT_CUSTOM_VERSION
+
+config BR2_COREBOOT_CONFIG_FILE
+        string "coreboot configuration file for compilation"
+        default default
+        help
+            String used to define hw specific make config file
+
+endif
+
